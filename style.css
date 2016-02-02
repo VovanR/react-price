@@ -1,0 +1,23 @@
+.price {
+	white-space: nowrap;
+	word-spacing: -0.1em;
+}
+
+.price__cost {
+}
+
+.price__currency {
+	margin-left: 0.15em;
+}
+
+
+.price_old {
+	color: #ff0000;
+}
+
+.price_old .price__cost {
+	text-decoration: line-through;
+}
+
+.price_old .price__currency {
+}
