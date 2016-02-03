@@ -1,6 +1,7 @@
 .price {
 	white-space: nowrap;
 	word-spacing: -0.1em;
+	display: inline-block;
 }
 
 .price__cost {
