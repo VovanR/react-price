@@ -2,7 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 
 const TYPES = {
-	old: 'price_old'
+	def: {
+		className: 'price',
+		tagName: 'div'
+	},
+	old: {
+		className: 'price_old',
+		tagName: 'del'
+	}
 };
 
 const Price = React.createClass({
@@ -15,20 +22,21 @@ const Price = React.createClass({
 
 	render() {
 		const {cost, currency, type, className} = this.props;
+		const t = TYPES[type] || TYPES.def;
 		const classes = {
-			price: true,
-			[TYPES[type]]: Boolean(TYPES[type])
+			[TYPES.def.className]: true,
+			[t.className]: Boolean(t)
 		};
 
 		return (
-			<div className={classNames(className, classes)}>
+			<t.tagName className={classNames(className, classes)}>
 				{cost === undefined ? null : (
 					<span className="price__cost">{cost}</span>
 				)}
 				{currency === undefined || cost === undefined ? null : (
 					<span className="price__currency">{currency}</span>
 				)}
-			</div>
+			</t.tagName>
 		);
 	}
 });

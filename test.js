@@ -12,6 +12,7 @@ function createComponent(component, props = {}) {
 test(t => {
 	const result = createComponent(C);
 
+	t.is(result.props.className, 'price');
 	t.is(result.type, 'div');
 });
 
@@ -64,4 +65,16 @@ test(t => {
 
 	t.is(result.props.children[0].type, 'span');
 	t.is(result.props.children[1].type, 'span');
+});
+
+test(t => {
+	const props = {
+		cost: 5,
+		currency: '$',
+		type: 'old'
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.className, 'price price_old');
+	t.is(result.type, 'del');
 });
