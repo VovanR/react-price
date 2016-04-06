@@ -14,7 +14,10 @@ const TYPES = {
 
 const Price = React.createClass({
 	propTypes: {
-		cost: React.PropTypes.number,
+		cost: React.PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.number
+		]),
 		currency: React.PropTypes.string,
 		type: React.PropTypes.string,
 		className: React.PropTypes.string

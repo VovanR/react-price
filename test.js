@@ -78,3 +78,12 @@ test(t => {
 	t.is(result.props.className, 'price price_old');
 	t.is(result.type, 'del');
 });
+
+test('`cost` prop type `String|Number`', t => {
+	const props = {
+		cost: '15 000'
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.children[0].props.children, '15 000');
+});
