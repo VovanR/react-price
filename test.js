@@ -9,14 +9,14 @@ function createComponent(component, props = {}) {
 	return shallowRenderer.getRenderOutput();
 }
 
-test(t => {
+test('render price block', t => {
 	const result = createComponent(C);
 
 	t.is(result.props.className, 'price');
 	t.is(result.type, 'div');
 });
 
-test(t => {
+test('render childrens blocks', t => {
 	const props = {
 		cost: 99,
 		currency: 'USD'
@@ -27,7 +27,7 @@ test(t => {
 	t.is(result.props.children[1].type, 'span');
 });
 
-test(t => {
+test('don\'t render currency without currency prop', t => {
 	const props = {
 		cost: 99
 	};
@@ -37,7 +37,7 @@ test(t => {
 	t.is(result.props.children[1], null);
 });
 
-test(t => {
+test('don\'t render childrens without props', t => {
 	const props = {
 	};
 	const result = createComponent(C, props);
@@ -46,7 +46,7 @@ test(t => {
 	t.is(result.props.children[1], null);
 });
 
-test(t => {
+test('don\'t render currency without cost', t => {
 	const props = {
 		currency: 'USD'
 	};
@@ -56,7 +56,7 @@ test(t => {
 	t.is(result.props.children[1], null);
 });
 
-test(t => {
+test('understand cost value is `0`', t => {
 	const props = {
 		cost: 0,
 		currency: 'USD'
@@ -67,7 +67,7 @@ test(t => {
 	t.is(result.props.children[1].type, 'span');
 });
 
-test(t => {
+test('price type', t => {
 	const props = {
 		cost: 5,
 		currency: '$',
@@ -77,6 +77,17 @@ test(t => {
 
 	t.is(result.props.className, 'price price_old');
 	t.is(result.type, 'del');
+});
+
+test('custom className', t => {
+	const props = {
+		cost: 5,
+		type: 'old',
+		className: 'foo bar baz'
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.className, 'price price_old foo bar baz');
 });
 
 test('`cost` prop type `String|Number`', t => {

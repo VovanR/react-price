@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 
 const TYPES = {
 	def: {
@@ -25,14 +24,20 @@ const Price = React.createClass({
 
 	render() {
 		const {cost, currency, type, className} = this.props;
+		const isNotDefault = type !== 'def' && Boolean(TYPES[type]);
 		const t = TYPES[type] || TYPES.def;
-		const classes = {
-			[TYPES.def.className]: true,
-			[t.className]: Boolean(t)
-		};
+		let classes = [];
+		classes.push(TYPES.def.className);
+		if (isNotDefault) {
+			classes.push(t.className);
+		}
+		if (className) {
+			classes.push(className);
+		}
+		classes = classes.join(' ');
 
 		return (
-			<t.tagName className={classNames(className, classes)}>
+			<t.tagName className={classes}>
 				{cost === undefined ? null : (
 					<span className="price__cost">{cost}</span>
 				)}
