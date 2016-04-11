@@ -2,6 +2,7 @@ module.exports = {
 	entry: [
 		'./example/app.jsx'
 	],
+	devtool: 'eval',
 	output: {
 		path: './example',
 		filename: 'bundle.js',
@@ -11,9 +12,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.jsx$/,
-				loaders: [
-					'babel'
-				]
+				loader: 'babel'
 			},
 			{
 				test: /\.css$/,

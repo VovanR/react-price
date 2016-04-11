@@ -1,10 +1,12 @@
 # react-price
 
+[![Commitizen friendly][commitizen-image]][commitizen-url]
+[![XO code style][codestyle-image]][codestyle-url]
+
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][depstat-image]][depstat-url]
 [![DevDependency Status][depstat-dev-image]][depstat-dev-url]
-[![XO code style][codestyle-image]][codestyle-url]
 
 > React price component
 
@@ -45,6 +47,12 @@ ReactDOM.render(price, document.getElementById('app'));
 
 MIT © [Vladimir Rodkin](https://github.com/VovanR)
 
+[commitizen-url]: http://commitizen.github.io/cz-cli/
+[commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square
+
+[codestyle-url]: https://github.com/sindresorhus/xo
+[codestyle-image]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square
+
 [npm-url]: https://npmjs.org/package/react-price
 [npm-image]: https://img.shields.io/npm/v/react-price.svg?style=flat-square
 
@@ -56,6 +64,3 @@ MIT © [Vladimir Rodkin](https://github.com/VovanR)
 
 [depstat-dev-url]: https://david-dm.org/VovanR/react-price
 [depstat-dev-image]: https://david-dm.org/VovanR/react-price/dev-status.svg?style=flat-square
-
-[codestyle-url]: https://github.com/sindresorhus/xo
-[codestyle-image]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square
