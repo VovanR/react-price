@@ -18,8 +18,14 @@ const Price = React.createClass({
 			React.PropTypes.number
 		]),
 		currency: React.PropTypes.string,
-		type: React.PropTypes.string,
+		type: React.PropTypes.oneOf(['def', 'old']),
 		className: React.PropTypes.string
+	},
+
+	getDefaultProps() {
+		return {
+			type: 'def'
+		};
 	},
 
 	render() {

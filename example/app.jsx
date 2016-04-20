@@ -1,7 +1,5 @@
-/* global document */
+/* global document, React, ReactDOM */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Price from '../index.jsx';
 
 require('../style.css');

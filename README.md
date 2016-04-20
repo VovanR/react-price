@@ -10,6 +10,8 @@
 
 > React price component
 
+Demo: [vovanr.github.io/react-price][demo]
+
 ![](preview.png)
 
 ## Install
@@ -19,33 +21,53 @@ npm install --save react-price
 ```
 
 ## Usage
+See: [example](example/app.jsx)
 
 ```js
 import Price from 'react-price';
 
 const price = (
-	<div>
-		<div>
-			<small>{'Old: '}</small>
-			<Price cost={100} currency={'$'} type={'old'}/>
-		</div>
-		<div>
-			<small>{'New: '}</small>
-			<Price cost={91.55} currency={'€'}/>
-		</div>
-		<div>
-			<small>{'Sale: '}</small>
-			<Price cost={'7 793'} currency={'₽'}/>
-		</div>
-	</div>
+    <div>
+        <div>
+            <small>{'Old: '}</small>
+            <Price cost={100} currency={'$'} type={'old'}/>
+        </div>
+        <div>
+            <small>{'New: '}</small>
+            <Price cost={91.55} currency={'€'}/>
+        </div>
+        <div>
+            <small>{'Sale: '}</small>
+            <Price cost={'7 793'} currency={'₽'}/>
+        </div>
+    </div>
 );
 
 ReactDOM.render(price, document.getElementById('app'));
 ```
 
+## Api
+
+```js
+DecInc.propTypes = {
+    cost: React.PropTypes.oneOfType([
+        React.PropTypes.string,
+        React.PropTypes.number
+    ]),
+    currency: React.PropTypes.string,
+    type: React.PropTypes.oneOf(['def', 'old']),
+    className: React.PropTypes.string
+};
+DecInc.defaultProps = {
+    type: 'def'
+};
+```
+
 ## License
 
 MIT © [Vladimir Rodkin](https://github.com/VovanR)
+
+[demo]: https://vovanr.github.io/react-price
 
 [commitizen-url]: http://commitizen.github.io/cz-cli/
 [commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square
