@@ -56,6 +56,17 @@ test('don\'t render currency without cost', t => {
 	t.is(result.props.children[1], null);
 });
 
+test('don\'t render currency if cost is empty string', t => {
+	const props = {
+		cost: '',
+		currency: 'USD'
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.children[0], null);
+	t.is(result.props.children[1], null);
+});
+
 test('understand cost value is `0`', t => {
 	const props = {
 		cost: 0,

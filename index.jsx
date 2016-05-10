@@ -32,6 +32,7 @@ const Price = React.createClass({
 		const {cost, currency, type, className} = this.props;
 		const isNotDefault = type !== 'def' && Boolean(TYPES[type]);
 		const t = TYPES[type] || TYPES.def;
+
 		let classes = [];
 		classes.push(TYPES.def.className);
 		if (isNotDefault) {
@@ -42,14 +43,17 @@ const Price = React.createClass({
 		}
 		classes = classes.join(' ');
 
+		const isCostVisible = (cost || cost === 0);
+		const isCurrencyVisible = (currency !== undefined && isCostVisible);
+
 		return (
 			<t.tagName className={classes}>
-				{cost === undefined ? null : (
+				{isCostVisible ? (
 					<span className="price__cost">{cost}</span>
-				)}
-				{currency === undefined || cost === undefined ? null : (
+				) : null}
+				{isCurrencyVisible ? (
 					<span className="price__currency">{currency}</span>
-				)}
+				) : null}
 			</t.tagName>
 		);
 	}
