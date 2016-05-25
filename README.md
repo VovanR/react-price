@@ -49,7 +49,7 @@ ReactDOM.render(price, document.getElementById('app'));
 ## Api
 
 ```js
-DecInc.propTypes = {
+Price.propTypes = {
     cost: React.PropTypes.oneOfType([
         React.PropTypes.string,
         React.PropTypes.number
@@ -58,7 +58,7 @@ DecInc.propTypes = {
     type: React.PropTypes.oneOf(['def', 'old']),
     className: React.PropTypes.string
 };
-DecInc.defaultProps = {
+Price.defaultProps = {
     type: 'def'
 };
 ```
