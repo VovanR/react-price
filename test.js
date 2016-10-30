@@ -23,8 +23,8 @@ test('render childrens blocks', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[0].type, 'span');
 	t.is(result.props.children[1].type, 'span');
+	t.is(result.props.children[2].type, 'span');
 });
 
 test('don\'t render currency without currency prop', t => {
@@ -33,8 +33,8 @@ test('don\'t render currency without currency prop', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[0].type, 'span');
-	t.is(result.props.children[1], null);
+	t.is(result.props.children[1].type, 'span');
+	t.is(result.props.children[2], null);
 });
 
 test('don\'t render childrens without props', t => {
@@ -42,8 +42,8 @@ test('don\'t render childrens without props', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[0], null);
 	t.is(result.props.children[1], null);
+	t.is(result.props.children[2], null);
 });
 
 test('don\'t render currency without cost', t => {
@@ -52,8 +52,8 @@ test('don\'t render currency without cost', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[0], null);
 	t.is(result.props.children[1], null);
+	t.is(result.props.children[2], null);
 });
 
 test('don\'t render currency if cost is empty string', t => {
@@ -63,8 +63,8 @@ test('don\'t render currency if cost is empty string', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[0], null);
 	t.is(result.props.children[1], null);
+	t.is(result.props.children[2], null);
 });
 
 test('understand cost value is `0`', t => {
@@ -74,8 +74,8 @@ test('understand cost value is `0`', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[0].type, 'span');
 	t.is(result.props.children[1].type, 'span');
+	t.is(result.props.children[2].type, 'span');
 });
 
 test('price type', t => {
@@ -107,5 +107,23 @@ test('`cost` prop type `String|Number`', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[0].props.children, '15 000');
+	t.is(result.props.children[1].props.children, '15 000');
+});
+
+test('`prefix` prop', t => {
+	const props = {
+		prefix: 'foo'
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.children[0].props.children, 'foo');
+});
+
+test('`postfix` prop', t => {
+	const props = {
+		postfix: 'foo'
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.children[3].props.children, 'foo');
 });

@@ -14,12 +14,17 @@ const TYPES = {
 const Price = React.createClass({
 	propTypes: {
 		cost: React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.number
+			React.PropTypes.number,
+			React.PropTypes.string
 		]),
+		className: React.PropTypes.string,
 		currency: React.PropTypes.string,
-		type: React.PropTypes.oneOf(['def', 'old']),
-		className: React.PropTypes.string
+		prefix: React.PropTypes.any,
+		postfix: React.PropTypes.any,
+		type: React.PropTypes.oneOf([
+			'def',
+			'old'
+		])
 	},
 
 	getDefaultProps() {
@@ -29,7 +34,14 @@ const Price = React.createClass({
 	},
 
 	render() {
-		const {cost, currency, type, className} = this.props;
+		const {
+			className,
+			cost,
+			currency,
+			postfix,
+			prefix,
+			type
+		} = this.props;
 		const isNotDefault = type !== 'def' && Boolean(TYPES[type]);
 		const t = TYPES[type] || TYPES.def;
 
@@ -48,11 +60,28 @@ const Price = React.createClass({
 
 		return (
 			<t.tagName className={classes}>
-				{isCostVisible ? (
-					<span className="price__cost">{cost}</span>
+				{prefix ? (
+					<span className="price__prefix">
+						{prefix}
+					</span>
 				) : null}
+
+				{isCostVisible ? (
+					<span className="price__cost">
+						{cost}
+					</span>
+				) : null}
+
 				{isCurrencyVisible ? (
-					<span className="price__currency">{currency}</span>
+					<span className="price__currency">
+						{currency}
+					</span>
+				) : null}
+
+				{postfix ? (
+					<span className="price__postfix">
+						{postfix}
+					</span>
 				) : null}
 			</t.tagName>
 		);
