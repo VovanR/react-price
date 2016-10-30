@@ -1,3 +1,13 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/vovanr/react-price/compare/v0.3.2...v0.4.0) (2016-10-30)
+
+
+### Features
+
+* **lib:** Add prefix and postfix properties ([bfb925a](https://github.com/vovanr/react-price/commit/bfb925a)), closes [#9](https://github.com/vovanr/react-price/issues/9)
+
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/vovanr/react-price/compare/v0.3.1...v0.3.2) (2016-05-10)
 
