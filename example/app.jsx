@@ -1,4 +1,5 @@
-/* global document, React, ReactDOM */
+/* global document React ReactDOM */
+/* eslint import/no-unassigned-import: 0 */
 
 import Price from '../index.jsx';
 
@@ -14,17 +15,20 @@ const price = (
 		<p>
 			<time>03.02.2016</time>
 		</p>
+
 		<div>
 			<small>{'Old: '}</small>
-			<Price cost={100} currency={'$'} type={'old'}/>
+			<Price cost={100} currency="$" type="old"/>
 		</div>
+
 		<div>
 			<small>{'New: '}</small>
-			<Price cost={91.55} currency={'€'}/>
+			<Price cost={91.55} currency="€"/>
 		</div>
+
 		<div>
 			<small>{'Sale: '}</small>
-			<Price cost={'7 793'} currency={'₽'}/>
+			<Price cost={'7 793'} currency="₽"/>
 		</div>
 	</div>
 );
