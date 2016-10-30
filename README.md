@@ -51,12 +51,17 @@ ReactDOM.render(price, document.getElementById('app'));
 ```js
 Price.propTypes = {
     cost: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.number
+        React.PropTypes.number,
+        React.PropTypes.string
     ]),
+    className: React.PropTypes.string,
     currency: React.PropTypes.string,
-    type: React.PropTypes.oneOf(['def', 'old']),
-    className: React.PropTypes.string
+    prefix: React.PropTypes.any,
+    postfix: React.PropTypes.any,
+    type: React.PropTypes.oneOf([
+        'def',
+        'old'
+    ]),
 };
 Price.defaultProps = {
     type: 'def'
