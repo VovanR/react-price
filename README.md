@@ -56,6 +56,7 @@ Price.propTypes = {
     ]),
     className: React.PropTypes.string,
     currency: React.PropTypes.string,
+    currencyFirst: React.PropTypes.bool,
     prefix: React.PropTypes.any,
     postfix: React.PropTypes.any,
     type: React.PropTypes.oneOf([
@@ -64,6 +65,7 @@ Price.propTypes = {
     ]),
 };
 Price.defaultProps = {
+    currencyFirst: false,
     type: 'def'
 };
 ```
