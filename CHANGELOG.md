@@ -1,3 +1,13 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/vovanr/react-price/compare/v0.4.0...v0.5.0) (2016-10-31)
+
+
+### Features
+
+* **lib:** Add currency position `currencyFirst` property ([766f0f6](https://github.com/vovanr/react-price/commit/766f0f6)), closes [#11](https://github.com/vovanr/react-price/issues/11)
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/vovanr/react-price/compare/v0.3.2...v0.4.0) (2016-10-30)
 
