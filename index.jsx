@@ -112,10 +112,12 @@ const Price = React.createClass({
 			r.push(this.renderBlock('postfix'));
 		}
 
-		return (
-			<t.tagName className={this.getClassName()}>
-				{r}
-			</t.tagName>
+		return React.createElement(
+			t.tagName,
+			{
+				className: this.getClassName()
+			},
+			r
 		);
 	}
 });
