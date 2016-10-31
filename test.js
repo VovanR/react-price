@@ -23,8 +23,10 @@ test('render childrens blocks', t => {
 	};
 	const result = createComponent(C, props);
 
+	t.is(result.props.children[0].type, 'span');
+	t.is(result.props.children[0].props.className, 'price__cost');
 	t.is(result.props.children[1].type, 'span');
-	t.is(result.props.children[2].type, 'span');
+	t.is(result.props.children[1].props.className, 'price__currency');
 });
 
 test('don\'t render currency without currency prop', t => {
@@ -33,8 +35,8 @@ test('don\'t render currency without currency prop', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[1].type, 'span');
-	t.is(result.props.children[2], null);
+	t.is(result.props.children[0].type, 'span');
+	t.is(result.props.children[1], null);
 });
 
 test('don\'t render childrens without props', t => {
@@ -42,8 +44,8 @@ test('don\'t render childrens without props', t => {
 	};
 	const result = createComponent(C, props);
 
+	t.is(result.props.children[0], null);
 	t.is(result.props.children[1], null);
-	t.is(result.props.children[2], null);
 });
 
 test('don\'t render currency without cost', t => {
@@ -52,8 +54,8 @@ test('don\'t render currency without cost', t => {
 	};
 	const result = createComponent(C, props);
 
+	t.is(result.props.children[0], null);
 	t.is(result.props.children[1], null);
-	t.is(result.props.children[2], null);
 });
 
 test('don\'t render currency if cost is empty string', t => {
@@ -63,8 +65,8 @@ test('don\'t render currency if cost is empty string', t => {
 	};
 	const result = createComponent(C, props);
 
+	t.is(result.props.children[0], null);
 	t.is(result.props.children[1], null);
-	t.is(result.props.children[2], null);
 });
 
 test('understand cost value is `0`', t => {
@@ -74,11 +76,11 @@ test('understand cost value is `0`', t => {
 	};
 	const result = createComponent(C, props);
 
+	t.is(result.props.children[0].type, 'span');
 	t.is(result.props.children[1].type, 'span');
-	t.is(result.props.children[2].type, 'span');
 });
 
-test('price type', t => {
+test('price `type` prop', t => {
 	const props = {
 		cost: 5,
 		currency: '$',
@@ -90,7 +92,7 @@ test('price type', t => {
 	t.is(result.type, 'del');
 });
 
-test('custom className', t => {
+test('`className` prop', t => {
 	const props = {
 		cost: 5,
 		type: 'old',
@@ -107,7 +109,7 @@ test('`cost` prop type `String|Number`', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[1].props.children, '15 000');
+	t.is(result.props.children[0].props.children, '15 000');
 });
 
 test('`prefix` prop', t => {
@@ -125,5 +127,32 @@ test('`postfix` prop', t => {
 	};
 	const result = createComponent(C, props);
 
-	t.is(result.props.children[3].props.children, 'foo');
+	t.is(result.props.children[2].props.children, 'foo');
+});
+
+test('`currencyFirst=false` prop', t => {
+	const props = {
+		cost: 5,
+		currency: 'USD'
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.children[0].props.children, 5);
+	t.is(result.props.children[0].props.className, 'price__cost');
+	t.is(result.props.children[1].props.children, 'USD');
+	t.is(result.props.children[1].props.className, 'price__currency');
+});
+
+test('`currencyFirst=true` prop', t => {
+	const props = {
+		cost: 5,
+		currency: 'USD',
+		currencyFirst: true
+	};
+	const result = createComponent(C, props);
+
+	t.is(result.props.children[0].props.children, 'USD');
+	t.is(result.props.children[0].props.className, 'price__currency');
+	t.is(result.props.children[1].props.children, 5);
+	t.is(result.props.children[1].props.className, 'price__cost');
 });

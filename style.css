@@ -11,6 +11,17 @@
 	margin-left: 0.15em;
 }
 
+.price__currency + .price__cost,
+.price__cost + .price__currency {
+	margin-left: 0.15em;
+}
+
+.price__prefix {
+}
+
+.price__postfix {
+}
+
 
 .price_old {
 	color: #ff0000;
@@ -22,4 +33,10 @@
 }
 
 .price_old .price__currency {
+}
+
+.price_old .price__prefix {
+}
+
+.price_old .price__postfix {
 }

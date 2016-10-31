@@ -1,12 +1,14 @@
 import React from 'react';
 
+const className = 'price';
+
 const TYPES = {
 	def: {
-		className: 'price',
+		className,
 		tagName: 'div'
 	},
 	old: {
-		className: 'price_old',
+		className: `${className}_old`,
 		tagName: 'del'
 	}
 };
@@ -19,6 +21,7 @@ const Price = React.createClass({
 		]),
 		className: React.PropTypes.string,
 		currency: React.PropTypes.string,
+		currencyFirst: React.PropTypes.bool,
 		prefix: React.PropTypes.any,
 		postfix: React.PropTypes.any,
 		type: React.PropTypes.oneOf([
@@ -29,60 +32,89 @@ const Price = React.createClass({
 
 	getDefaultProps() {
 		return {
+			currencyFirst: false,
 			type: 'def'
 		};
 	},
 
-	render() {
+	renderBlock(name) {
+		return (
+			<span
+				key={name}
+				className={`${className}__${name}`}
+				>
+				{this.props[name]}
+			</span>
+		);
+	},
+
+	getClassName() {
 		const {
 			className,
+			type
+		} = this.props;
+		const t = TYPES[type] || TYPES.def;
+		const isNotDefault = type !== 'def' && Boolean(TYPES[type]);
+		const classes = [];
+
+		classes.push(TYPES.def.className);
+
+		if (isNotDefault) {
+			classes.push(t.className);
+		}
+
+		if (className) {
+			classes.push(className);
+		}
+
+		return classes.join(' ');
+	},
+
+	render() {
+		const {
 			cost,
 			currency,
+			currencyFirst,
 			postfix,
 			prefix,
 			type
 		} = this.props;
-		const isNotDefault = type !== 'def' && Boolean(TYPES[type]);
 		const t = TYPES[type] || TYPES.def;
-
-		let classes = [];
-		classes.push(TYPES.def.className);
-		if (isNotDefault) {
-			classes.push(t.className);
-		}
-		if (className) {
-			classes.push(className);
-		}
-		classes = classes.join(' ');
 
 		const isCostVisible = (cost || cost === 0);
 		const isCurrencyVisible = (currency !== undefined && isCostVisible);
 
+		const r = [];
+
+		if (prefix) {
+			r.push(this.renderBlock('prefix'));
+		}
+
+		let priceCost = null;
+		if (isCostVisible) {
+			priceCost = this.renderBlock('cost');
+		}
+
+		let priceCurrency = null;
+		if (isCurrencyVisible) {
+			priceCurrency = this.renderBlock('currency');
+		}
+
+		if (currencyFirst) {
+			r.push(priceCurrency);
+			r.push(priceCost);
+		} else {
+			r.push(priceCost);
+			r.push(priceCurrency);
+		}
+
+		if (postfix) {
+			r.push(this.renderBlock('postfix'));
+		}
+
 		return (
-			<t.tagName className={classes}>
-				{prefix ? (
-					<span className="price__prefix">
-						{prefix}
-					</span>
-				) : null}
-
-				{isCostVisible ? (
-					<span className="price__cost">
-						{cost}
-					</span>
-				) : null}
-
-				{isCurrencyVisible ? (
-					<span className="price__currency">
-						{currency}
-					</span>
-				) : null}
-
-				{postfix ? (
-					<span className="price__postfix">
-						{postfix}
-					</span>
-				) : null}
+			<t.tagName className={this.getClassName()}>
+				{r}
 			</t.tagName>
 		);
 	}
