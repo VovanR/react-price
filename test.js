@@ -13,7 +13,7 @@ test('render price block', t => {
 	const result = createComponent(C);
 
 	t.is(result.props.className, 'price');
-	t.is(result.type, 'div');
+	t.is(result.type, 'span');
 });
 
 test('render childrens blocks', t => {

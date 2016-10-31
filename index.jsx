@@ -5,7 +5,7 @@ const className = 'price';
 const TYPES = {
 	def: {
 		className,
-		tagName: 'div'
+		tagName: 'span'
 	},
 	old: {
 		className: `${className}_old`,
