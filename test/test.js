@@ -133,6 +133,16 @@ test('`prefix` prop', t => {
 	));
 });
 
+test('don\'t render `prefix` without `cost` prop', t => {
+	const props = {
+		prefix: 'foo'
+	};
+	const wrapper = shallow(<C {...props}/>);
+	t.true(wrapper.equals(
+		<span className="price"/>
+	));
+});
+
 test('`postfix` prop', t => {
 	const props = {
 		postfix: 'foo',
@@ -144,6 +154,16 @@ test('`postfix` prop', t => {
 			<span className="price__cost">{5}</span>
 			<span className="price__postfix">{'foo'}</span>
 		</span>
+	));
+});
+
+test('don\'t render `postfix` without `cost` prop', t => {
+	const props = {
+		postfix: 'foo'
+	};
+	const wrapper = shallow(<C {...props}/>);
+	t.true(wrapper.equals(
+		<span className="price"/>
 	));
 });
 
