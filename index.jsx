@@ -86,7 +86,7 @@ const Price = React.createClass({
 
 		const r = [];
 
-		if (prefix) {
+		if (prefix && isCostVisible) {
 			r.push(this.renderBlock('prefix'));
 		}
 
@@ -108,7 +108,7 @@ const Price = React.createClass({
 			r.push(priceCurrency);
 		}
 
-		if (postfix) {
+		if (postfix && isCostVisible) {
 			r.push(this.renderBlock('postfix'));
 		}
 

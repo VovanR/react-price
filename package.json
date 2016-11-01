@@ -11,7 +11,7 @@
   },
   "scripts": {
     "prepush": "npm test",
-    "test": "xo && ava",
+    "test": "xo && ava --verbose",
     "start": "webpack --watch",
     "release-patch": "mversion patch",
     "release-minor": "mversion minor",
@@ -45,18 +45,19 @@
     "conventional-changelog-cli": "1.2.0",
     "css-loader": "0.25.0",
     "cz-conventional-changelog": "1.2.0",
-    "eslint": "3.9.0",
+    "enzyme": "2.5.1",
+    "eslint": "3.9.1",
     "eslint-config-xo": "0.17.0",
     "eslint-config-xo-react": "0.10.0",
     "eslint-plugin-react": "6.4.1",
     "husky": "0.11.9",
+    "jsdom": "^9.8.3",
     "mversion": "1.10.1",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",
     "react-dom": "15.3.2",
     "style-loader": "0.13.1",
     "webpack": "1.13.3",
-    "webpack-dev-server": "1.16.2",
     "xo": "0.17.0"
   },
   "peerDependencies": {
@@ -70,8 +71,10 @@
     ]
   },
   "ava": {
+    "babel": "inherit",
     "require": [
-      "babel-register"
+      "babel-register",
+      "./test/helpers/setup-test-env.js"
     ]
   },
   "xo": {
