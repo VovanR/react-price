@@ -1,3 +1,14 @@
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/vovanr/react-price/compare/v0.5.0...v0.5.1) (2016-11-01)
+
+
+### Bug Fixes
+
+* **lib:** Don't render `prefix` and `postfix` without `cost` prop ([3bab242](https://github.com/vovanr/react-price/commit/3bab242)), closes [#15](https://github.com/vovanr/react-price/issues/15)
+* **lib:** Fix price block tag now is `span` ([7dce45c](https://github.com/vovanr/react-price/commit/7dce45c))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/vovanr/react-price/compare/v0.4.0...v0.5.0) (2016-10-31)
 
