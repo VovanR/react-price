@@ -1,13 +1,14 @@
 /* global document React ReactDOM */
-/* eslint import/no-unassigned-import: 0 */
 
-import Price from '../index.jsx';
+import Price, {PRICE_TYPE} from '../index';
 
-require('../style.css');
+// eslint-disable-next-line import/no-unassigned-import
+import '../style.css';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			currencyFirst: false,
 			postfix: '',
@@ -20,7 +21,9 @@ class App extends React.Component {
 	}
 
 	handleClickCurrencyFirst() {
-		this.setState({currencyFirst: !this.state.currencyFirst});
+		this.setState(prevState => ({
+			currencyFirst: !prevState.currencyFirst
+		}));
 	}
 
 	handleChangePostfix(e) {
@@ -46,7 +49,7 @@ class App extends React.Component {
 							checked={currencyFirst}
 							onClick={this.handleClickCurrencyFirst}
 							type="checkbox"
-							/>
+						/>
 
 						<span>
 							{'Currency first'}
@@ -63,7 +66,7 @@ class App extends React.Component {
 						<input
 							value={prefix}
 							onChange={this.handleChangePrefix}
-							/>
+						/>
 					</label>
 				</p>
 
@@ -76,7 +79,7 @@ class App extends React.Component {
 						<input
 							value={postfix}
 							onChange={this.handleChangePostfix}
-							/>
+						/>
 					</label>
 				</p>
 
@@ -85,7 +88,7 @@ class App extends React.Component {
 						fontSize: '250%',
 						fontFamily: 'monospace'
 					}}
-					>
+				>
 					<p>
 						<time>
 							{'03.02.2016'}
@@ -100,11 +103,11 @@ class App extends React.Component {
 						<Price
 							cost={100}
 							currency="$"
-							type="old"
+							type={PRICE_TYPE.OLD}
 							currencyFirst={currencyFirst}
 							postfix={postfix}
 							prefix={prefix}
-							/>
+						/>
 					</div>
 
 					<div>
@@ -118,7 +121,7 @@ class App extends React.Component {
 							currencyFirst={currencyFirst}
 							postfix={postfix}
 							prefix={prefix}
-							/>
+						/>
 					</div>
 
 					<div>
@@ -127,12 +130,12 @@ class App extends React.Component {
 						</small>
 
 						<Price
-							cost={'7 793'}
+							cost="7 793"
 							currency="₽"
 							currencyFirst={currencyFirst}
 							postfix={postfix}
 							prefix={prefix}
-							/>
+						/>
 					</div>
 				</div>
 			</div>

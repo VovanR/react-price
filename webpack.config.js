@@ -1,30 +1,40 @@
+const path = require('path');
+
 module.exports = {
 	entry: [
 		'./example/app.jsx'
 	],
-	devtool: 'eval',
 	output: {
-		path: './example',
+		path: path.resolve(__dirname, 'example'),
 		filename: 'bundle.js',
 		publicPath: '/static/'
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
-				test: /\.jsx$/,
-				loader: 'babel'
+				test: /\.(js|jsx)$/,
+				use: 'babel-loader',
+				exclude: /node_modules/
 			},
 			{
 				test: /\.css$/,
-				loader: 'style-loader!css-loader'
+				use: [
+					{loader: 'style-loader'},
+					{loader: 'css-loader'}
+				]
 			}
 		]
 	},
 	externals: {
 		react: 'React',
-		'react-dom': 'ReactDOM'
+		'react-dom': 'ReactDOM',
+		'prop-types': 'PropTypes'
 	},
+	devtool: 'eval',
 	resolve: {
-		extensions: ['', '.js', '.jsx']
+		modules: [
+			path.resolve(__dirname, 'node_modules')
+		],
+		extensions: ['.js', '.jsx']
 	}
 };
