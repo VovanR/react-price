@@ -1,3 +1,13 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/VovanR/react-price/compare/v0.5.1...v0.6.0) (2018-02-05)
+
+
+### Features
+
+* **lib:** Update to React 16; Remove JSX code from component module ([06d820f](https://github.com/VovanR/react-price/commit/06d820f)), closes [#16](https://github.com/VovanR/react-price/issues/16)
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/vovanr/react-price/compare/v0.5.0...v0.5.1) (2016-11-01)
 
