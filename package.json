@@ -16,8 +16,8 @@
     "release-patch": "mversion patch",
     "release-minor": "mversion minor",
     "release-major": "mversion major",
-    "build": "webpack",
-    "deploy": "gh-pages-deploy"
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "deploy": "npm run build && gh-pages -d example"
   },
   "files": [
     "index.js",
@@ -43,6 +43,7 @@
     "babel-preset-react": "6.24.1",
     "babel-register": "6.26.0",
     "conventional-changelog-cli": "1.3.8",
+    "cross-env": "^5.1.3",
     "css-loader": "0.28.9",
     "cz-conventional-changelog": "2.1.0",
     "enzyme": "^3.3.0",
@@ -51,6 +52,7 @@
     "eslint-config-xo": "0.19.0",
     "eslint-config-xo-react": "0.16.0",
     "eslint-plugin-react": "7.6.1",
+    "gh-pages": "^1.1.0",
     "husky": "0.14.3",
     "mversion": "1.10.1",
     "prop-types": "^15.6.0",
@@ -85,12 +87,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "gh-pages-deploy": {
-    "staticpath": "example",
-    "prep": [
-      "build"
-    ],
-    "noprompt": false
   }
 }
