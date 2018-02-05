@@ -1,5 +1,4 @@
-import jsdom from 'jsdom';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-global.document = jsdom.jsdom('<body></body>');
-global.window = global.document.defaultView;
-global.navigator = global.window.navigator;
+Enzyme.configure({adapter: new Adapter()});
