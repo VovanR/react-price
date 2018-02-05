@@ -16,7 +16,7 @@ Demo: [vovanr.github.io/react-price][demo]
 
 ## Install
 
-```
+```shell
 npm install --save react-price
 ```
 
@@ -29,16 +29,16 @@ import Price from 'react-price';
 const price = (
     <div>
         <div>
-            <small>{'Old: '}</small>
-            <Price cost={100} currency={'$'} type={'old'}/>
+            <small>Old: </small>
+            <Price cost={100} currency="$" type="old"/>
         </div>
         <div>
-            <small>{'New: '}</small>
-            <Price cost={91.55} currency={'€'}/>
+            <small>New: </small>
+            <Price cost={91.55} currency="€"/>
         </div>
         <div>
-            <small>{'Sale: '}</small>
-            <Price cost={'7 793'} currency={'₽'}/>
+            <small>Sale: </small>
+            <Price cost="7 793" currency="₽"/>
         </div>
     </div>
 );
@@ -50,22 +50,24 @@ ReactDOM.render(price, document.getElementById('app'));
 
 ```js
 Price.propTypes = {
-    cost: React.PropTypes.oneOfType([
-        React.PropTypes.number,
-        React.PropTypes.string
-    ]),
-    className: React.PropTypes.string,
-    currency: React.PropTypes.string,
-    currencyFirst: React.PropTypes.bool,
-    prefix: React.PropTypes.any,
-    postfix: React.PropTypes.any,
-    type: React.PropTypes.oneOf([
+    cost: PropTypes.any,
+    className: PropTypes.string,
+    currency: PropTypes.any,
+    currencyFirst: PropTypes.bool,
+    prefix: PropTypes.any,
+    postfix: PropTypes.any,
+    type: PropTypes.oneOf([
         'def',
         'old'
     ]),
 };
 Price.defaultProps = {
+    cost: null,
+    className: '',
+    currency: null,
     currencyFirst: false,
+    prefix: null,
+    postfix: null,
     type: 'def'
 };
 ```
@@ -73,9 +75,9 @@ Price.defaultProps = {
 ## License
 MIT © [Vladimir Rodkin](https://github.com/VovanR)
 
-[demo]: http://vovanr.github.io/react-price
+[demo]: https://vovanr.github.io/react-price
 
-[commitizen-url]: http://commitizen.github.io/cz-cli/
+[commitizen-url]: https://commitizen.github.io/cz-cli/
 [commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square
 
 [codestyle-url]: https://github.com/sindresorhus/xo
