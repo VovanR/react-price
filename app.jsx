@@ -1,6 +1,6 @@
 /* global document React ReactDOM */
 
-import Price, {PRICE_TYPE} from '../index';
+import Price, {PRICE_TYPE} from '..';
 
 // eslint-disable-next-line import/no-unassigned-import
 import '../style.css';
@@ -9,18 +9,19 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
+		// eslint-disable-next-line react/state-in-constructor
 		this.state = {
 			currencyFirst: false,
 			postfix: '',
 			prefix: ''
 		};
 
-		this.handleClickCurrencyFirst = this.handleClickCurrencyFirst.bind(this);
+		this.handleChangeCurrencyFirst = this.handleChangeCurrencyFirst.bind(this);
 		this.handleChangePostfix = this.handleChangePostfix.bind(this);
 		this.handleChangePrefix = this.handleChangePrefix.bind(this);
 	}
 
-	handleClickCurrencyFirst() {
+	handleChangeCurrencyFirst() {
 		this.setState(prevState => ({
 			currencyFirst: !prevState.currencyFirst
 		}));
@@ -46,22 +47,20 @@ class App extends React.Component {
 				<p>
 					<label>
 						<input
-							checked={currencyFirst}
-							onClick={this.handleClickCurrencyFirst}
+							value={currencyFirst}
 							type="checkbox"
+							onChange={this.handleChangeCurrencyFirst}
 						/>
 
 						<span>
-							{'Currency first'}
+							Currency first
 						</span>
 					</label>
 				</p>
 
 				<p>
 					<label>
-						<span>
-							{'Prefix: '}
-						</span>
+						<span>Prefix: </span>
 
 						<input
 							value={prefix}
@@ -72,9 +71,7 @@ class App extends React.Component {
 
 				<p>
 					<label>
-						<span>
-							{'Postfix: '}
-						</span>
+						<span>Postfix: </span>
 
 						<input
 							value={postfix}
@@ -91,14 +88,12 @@ class App extends React.Component {
 				>
 					<p>
 						<time>
-							{'03.02.2016'}
+							03.02.2016
 						</time>
 					</p>
 
 					<div>
-						<small>
-							{'Old: '}
-						</small>
+						<small>Old: </small>
 
 						<Price
 							cost={100}
@@ -111,9 +106,7 @@ class App extends React.Component {
 					</div>
 
 					<div>
-						<small>
-							{'New: '}
-						</small>
+						<small>New: </small>
 
 						<Price
 							cost={91.55}
@@ -125,9 +118,7 @@ class App extends React.Component {
 					</div>
 
 					<div>
-						<small>
-							{'Sale: '}
-						</small>
+						<small>Sale: </small>
 
 						<Price
 							cost="7 793"
@@ -143,4 +134,4 @@ class App extends React.Component {
 	}
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App/>, document.querySelector('#app'));
