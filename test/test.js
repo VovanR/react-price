@@ -1,7 +1,7 @@
 import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import Price, {PRICE_TYPE} from '../';
+import Price, {PRICE_TYPE} from '..';
 
 test('render price block', t => {
 	const wrapper = shallow(<Price/>);
