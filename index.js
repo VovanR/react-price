@@ -127,7 +127,9 @@ class Price extends Component {
 		);
 	}
 }
+// eslint-disable-next-line react/static-property-placement
 Price.propTypes = propTypes;
+// eslint-disable-next-line react/static-property-placement
 Price.defaultProps = defaultProps;
 
 /**
