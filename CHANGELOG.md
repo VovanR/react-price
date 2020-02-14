@@ -1,3 +1,7 @@
+## [0.6.1](https://github.com/VovanR/react-price/compare/v0.6.0...v0.6.1) (2020-02-14)
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/VovanR/react-price/compare/v0.5.1...v0.6.0) (2018-02-05)
 
