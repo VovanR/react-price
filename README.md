@@ -80,7 +80,7 @@ MIT © [Vladimir Rodkin](https://github.com/VovanR)
 [commitizen-url]: https://commitizen.github.io/cz-cli/
 [commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square
 
-[codestyle-url]: https://github.com/sindresorhus/xo
+[codestyle-url]: https://github.com/xojs/xo
 [codestyle-image]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square
 
 [npm-url]: https://npmjs.org/package/react-price
