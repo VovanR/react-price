@@ -22,17 +22,17 @@ class App extends React.Component {
   }
 
   handleChangeCurrencyFirst() {
-    this.setState(prevState => ({
-      currencyFirst: !prevState.currencyFirst
+    this.setState(previousState => ({
+      currencyFirst: !previousState.currencyFirst
     }));
   }
 
-  handleChangePostfix(e) {
-    this.setState({postfix: e.target.value});
+  handleChangePostfix({target: {value}}) {
+    this.setState({postfix: value});
   }
 
-  handleChangePrefix(e) {
-    this.setState({prefix: e.target.value});
+  handleChangePrefix({target: {value}}) {
+    this.setState({prefix: value});
   }
 
   render() {
