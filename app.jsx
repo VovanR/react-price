@@ -6,132 +6,132 @@ import Price, {PRICE_TYPE} from '..';
 import '../style.css';
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		// eslint-disable-next-line react/state-in-constructor
-		this.state = {
-			currencyFirst: false,
-			postfix: '',
-			prefix: ''
-		};
+    // eslint-disable-next-line react/state-in-constructor
+    this.state = {
+      currencyFirst: false,
+      postfix: '',
+      prefix: ''
+    };
 
-		this.handleChangeCurrencyFirst = this.handleChangeCurrencyFirst.bind(this);
-		this.handleChangePostfix = this.handleChangePostfix.bind(this);
-		this.handleChangePrefix = this.handleChangePrefix.bind(this);
-	}
+    this.handleChangeCurrencyFirst = this.handleChangeCurrencyFirst.bind(this);
+    this.handleChangePostfix = this.handleChangePostfix.bind(this);
+    this.handleChangePrefix = this.handleChangePrefix.bind(this);
+  }
 
-	handleChangeCurrencyFirst() {
-		this.setState(prevState => ({
-			currencyFirst: !prevState.currencyFirst
-		}));
-	}
+  handleChangeCurrencyFirst() {
+    this.setState(previousState => ({
+      currencyFirst: !previousState.currencyFirst
+    }));
+  }
 
-	handleChangePostfix(e) {
-		this.setState({postfix: e.target.value});
-	}
+  handleChangePostfix({target: {value}}) {
+    this.setState({postfix: value});
+  }
 
-	handleChangePrefix(e) {
-		this.setState({prefix: e.target.value});
-	}
+  handleChangePrefix({target: {value}}) {
+    this.setState({prefix: value});
+  }
 
-	render() {
-		const {
-			currencyFirst,
-			postfix,
-			prefix
-		} = this.state;
+  render() {
+    const {
+      currencyFirst,
+      postfix,
+      prefix
+    } = this.state;
 
-		return (
-			<div>
-				<p>
-					<label>
-						<input
-							value={currencyFirst}
-							type="checkbox"
-							onChange={this.handleChangeCurrencyFirst}
-						/>
+    return (
+      <div>
+        <p>
+          <label>
+            <input
+              value={currencyFirst}
+              type="checkbox"
+              onChange={this.handleChangeCurrencyFirst}
+            />
 
-						<span>
-							Currency first
-						</span>
-					</label>
-				</p>
+            <span>
+              Currency first
+            </span>
+          </label>
+        </p>
 
-				<p>
-					<label>
-						<span>Prefix: </span>
+        <p>
+          <label>
+            <span>Prefix: </span>
 
-						<input
-							value={prefix}
-							onChange={this.handleChangePrefix}
-						/>
-					</label>
-				</p>
+            <input
+              value={prefix}
+              onChange={this.handleChangePrefix}
+            />
+          </label>
+        </p>
 
-				<p>
-					<label>
-						<span>Postfix: </span>
+        <p>
+          <label>
+            <span>Postfix: </span>
 
-						<input
-							value={postfix}
-							onChange={this.handleChangePostfix}
-						/>
-					</label>
-				</p>
+            <input
+              value={postfix}
+              onChange={this.handleChangePostfix}
+            />
+          </label>
+        </p>
 
-				<div
-					style={{
-						fontSize: '250%',
-						fontFamily: 'monospace'
-					}}
-				>
-					<p>
-						<time>
-							03.02.2016
-						</time>
-					</p>
+        <div
+          style={{
+            fontSize: '250%',
+            fontFamily: 'monospace'
+          }}
+        >
+          <p>
+            <time>
+              03.02.2016
+            </time>
+          </p>
 
-					<div>
-						<small>Old: </small>
+          <div>
+            <small>Old: </small>
 
-						<Price
-							cost={100}
-							currency="$"
-							type={PRICE_TYPE.OLD}
-							currencyFirst={currencyFirst}
-							postfix={postfix}
-							prefix={prefix}
-						/>
-					</div>
+            <Price
+              cost={100}
+              currency="$"
+              type={PRICE_TYPE.OLD}
+              currencyFirst={currencyFirst}
+              postfix={postfix}
+              prefix={prefix}
+            />
+          </div>
 
-					<div>
-						<small>New: </small>
+          <div>
+            <small>New: </small>
 
-						<Price
-							cost={91.55}
-							currency="€"
-							currencyFirst={currencyFirst}
-							postfix={postfix}
-							prefix={prefix}
-						/>
-					</div>
+            <Price
+              cost={91.55}
+              currency="€"
+              currencyFirst={currencyFirst}
+              postfix={postfix}
+              prefix={prefix}
+            />
+          </div>
 
-					<div>
-						<small>Sale: </small>
+          <div>
+            <small>Sale: </small>
 
-						<Price
-							cost="7 793"
-							currency="₽"
-							currencyFirst={currencyFirst}
-							postfix={postfix}
-							prefix={prefix}
-						/>
-					</div>
-				</div>
-			</div>
-		);
-	}
+            <Price
+              cost="7 793"
+              currency="₽"
+              currencyFirst={currencyFirst}
+              postfix={postfix}
+              prefix={prefix}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 ReactDOM.render(<App/>, document.querySelector('#app'));
