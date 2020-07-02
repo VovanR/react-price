@@ -4,18 +4,14 @@
   "description": "React price component",
   "license": "MIT",
   "repository": "VovanR/react-price",
-  "author": {
-    "name": "Vladimir Rodkin",
-    "email": "mail@vovanr.com",
-    "url": "https://github.com/VovanR"
-  },
+  "author": "Vladimir Rodkin <mail@vovanr.com> (https://github.com/VovanR)",
   "scripts": {
-    "test": "xo && ava --verbose",
+    "build": "cross-env NODE_ENV=production webpack -p",
     "start": "webpack --watch",
+    "test": "xo && ava --verbose",
     "release-patch": "mversion patch",
     "release-minor": "mversion minor",
     "release-major": "mversion major",
-    "build": "cross-env NODE_ENV=production webpack -p",
     "deploy": "npm run build && gh-pages -d example"
   },
   "files": [
