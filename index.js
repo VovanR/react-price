@@ -4,128 +4,128 @@ import PropTypes from 'prop-types';
 const className = 'price';
 
 export const PRICE_TYPE = {
-	DEF: 'def',
-	OLD: 'old'
+  DEF: 'def',
+  OLD: 'old'
 };
 
 const BLOCK_SETTINGS_BY_TYPE = {
-	[PRICE_TYPE.DEF]: {
-		className,
-		tagName: 'span'
-	},
-	[PRICE_TYPE.OLD]: {
-		className: `${className}_old`,
-		tagName: 'del'
-	}
+  [PRICE_TYPE.DEF]: {
+    className,
+    tagName: 'span'
+  },
+  [PRICE_TYPE.OLD]: {
+    className: `${className}_old`,
+    tagName: 'del'
+  }
 };
 
 const propTypes = {
-	cost: PropTypes.any,
-	className: PropTypes.string,
-	currency: PropTypes.any,
-	currencyFirst: PropTypes.bool,
-	prefix: PropTypes.any,
-	postfix: PropTypes.any,
-	type: PropTypes.oneOf([
-		PRICE_TYPE.DEF,
-		PRICE_TYPE.OLD
-	])
+  cost: PropTypes.any,
+  className: PropTypes.string,
+  currency: PropTypes.any,
+  currencyFirst: PropTypes.bool,
+  prefix: PropTypes.any,
+  postfix: PropTypes.any,
+  type: PropTypes.oneOf([
+    PRICE_TYPE.DEF,
+    PRICE_TYPE.OLD
+  ])
 };
 
 const defaultProps = {
-	cost: null,
-	className: '',
-	currency: null,
-	currencyFirst: false,
-	prefix: null,
-	postfix: null,
-	type: PRICE_TYPE.DEF
+  cost: null,
+  className: '',
+  currency: null,
+  currencyFirst: false,
+  prefix: null,
+  postfix: null,
+  type: PRICE_TYPE.DEF
 };
 
 class Price extends Component {
-	renderBlock(name) {
-		return React.createElement(
-			'span',
-			{
-				key: name,
-				className: `${className}__${name}`
-			},
-			this.props[name]
-		);
-	}
+  renderBlock(name) {
+    return React.createElement(
+      'span',
+      {
+        key: name,
+        className: `${className}__${name}`
+      },
+      this.props[name]
+    );
+  }
 
-	getClassName() {
-		const {
-			className,
-			type
-		} = this.props;
-		const t = BLOCK_SETTINGS_BY_TYPE[type] || BLOCK_SETTINGS_BY_TYPE[PRICE_TYPE.DEF];
-		const isNotDefault = type !== PRICE_TYPE.DEF && Boolean(BLOCK_SETTINGS_BY_TYPE[type]);
-		const classes = [];
+  getClassName() {
+    const {
+      className,
+      type
+    } = this.props;
+    const t = BLOCK_SETTINGS_BY_TYPE[type] || BLOCK_SETTINGS_BY_TYPE[PRICE_TYPE.DEF];
+    const isNotDefault = type !== PRICE_TYPE.DEF && Boolean(BLOCK_SETTINGS_BY_TYPE[type]);
+    const classes = [];
 
-		classes.push(BLOCK_SETTINGS_BY_TYPE[PRICE_TYPE.DEF].className);
+    classes.push(BLOCK_SETTINGS_BY_TYPE[PRICE_TYPE.DEF].className);
 
-		if (isNotDefault) {
-			classes.push(t.className);
-		}
+    if (isNotDefault) {
+      classes.push(t.className);
+    }
 
-		if (className) {
-			classes.push(className);
-		}
+    if (className) {
+      classes.push(className);
+    }
 
-		return classes.join(' ');
-	}
+    return classes.join(' ');
+  }
 
-	render() {
-		const {
-			cost,
-			currency,
-			currencyFirst,
-			postfix,
-			prefix,
-			type
-		} = this.props;
-		const t = BLOCK_SETTINGS_BY_TYPE[type] || BLOCK_SETTINGS_BY_TYPE[PRICE_TYPE.DEF];
+  render() {
+    const {
+      cost,
+      currency,
+      currencyFirst,
+      postfix,
+      prefix,
+      type
+    } = this.props;
+    const t = BLOCK_SETTINGS_BY_TYPE[type] || BLOCK_SETTINGS_BY_TYPE[PRICE_TYPE.DEF];
 
-		const isCostVisible = isDefined(cost);
-		const isCurrencyVisible = (isDefined(currency) && isCostVisible);
+    const isCostVisible = isDefined(cost);
+    const isCurrencyVisible = (isDefined(currency) && isCostVisible);
 
-		const r = [];
+    const r = [];
 
-		if (prefix && isCostVisible) {
-			r.push(this.renderBlock('prefix'));
-		}
+    if (prefix && isCostVisible) {
+      r.push(this.renderBlock('prefix'));
+    }
 
-		let priceCost = null;
-		if (isCostVisible) {
-			priceCost = this.renderBlock('cost');
-		}
+    let priceCost = null;
+    if (isCostVisible) {
+      priceCost = this.renderBlock('cost');
+    }
 
-		let priceCurrency = null;
-		if (isCurrencyVisible) {
-			priceCurrency = this.renderBlock('currency');
-		}
+    let priceCurrency = null;
+    if (isCurrencyVisible) {
+      priceCurrency = this.renderBlock('currency');
+    }
 
-		if (currencyFirst) {
-			r.push(priceCurrency);
-			r.push(priceCost);
-		} else {
-			r.push(priceCost);
-			r.push(priceCurrency);
-		}
+    if (currencyFirst) {
+      r.push(priceCurrency);
+      r.push(priceCost);
+    } else {
+      r.push(priceCost);
+      r.push(priceCurrency);
+    }
 
-		if (postfix && isCostVisible) {
-			r.push(this.renderBlock('postfix'));
-		}
+    if (postfix && isCostVisible) {
+      r.push(this.renderBlock('postfix'));
+    }
 
-		return React.createElement(
-			t.tagName,
-			{
-				className: this.getClassName()
-			},
-			r
-		);
-	}
+    return React.createElement(
+      t.tagName,
+      {
+        className: this.getClassName()
+      },
+      r
+    );
+  }
 }
 // eslint-disable-next-line react/static-property-placement
 Price.propTypes = propTypes;
@@ -137,7 +137,7 @@ Price.defaultProps = defaultProps;
  * @returns {boolean}
  */
 function isDefined(item) {
-	return item !== undefined && item !== null && item !== '';
+  return item !== undefined && item !== null && item !== '';
 }
 
 export default Price;

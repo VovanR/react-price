@@ -84,7 +84,8 @@
     ]
   },
   "xo": {
-    "extends": "xo-react"
+    "extends": "xo-react",
+    "space": true
   },
   "husky": {
     "hooks": {
